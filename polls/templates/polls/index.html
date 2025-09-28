@@ -1,0 +1,42 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polls - MyAPP SE Fall 2025</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Polls Application</h1>
+            <p>MyAPP SE Fall 2025 - Django Tutorial</p>
+        </header>
+        
+        {% if latest_question_list %}
+            <div class="polls-list">
+                <h2>Latest Questions</h2>
+                <ul>
+                {% for question in latest_question_list %}
+                    <li>
+                        <a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a>
+                        <span class="pub-date">({{ question.pub_date|date:"M d, Y" }})</span>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% else %}
+            <div class="no-polls">
+                <p>No polls are available.</p>
+                <p><a href="/admin/">Create some polls in the admin interface</a></p>
+            </div>
+        {% endif %}
+        
+        <footer>
+            <p><a href="/admin/">Admin Panel</a> | <a href="/polls/">Home</a></p>
+        </footer>
+    </div>
+</body>
+</html>
