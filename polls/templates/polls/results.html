@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ question.question_text }} - Results</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Polls Application</h1>
+            <p><a href="{% url 'polls:index' %}">← Back to Polls</a></p>
+        </header>
+        
+        <div class="poll-results">
+            <h2>{{ question.question_text }}</h2>
+            <p class="pub-date">Published: {{ question.pub_date|date:"F d, Y" }}</p>
+            
+            <div class="results-list">
+                <h3>Results:</h3>
+                {% for choice in question.choice_set.all %}
+                    <div class="result-item">
+                        <div class="choice-text">{{ choice.choice_text }}</div>
+                        <div class="vote-count">{{ choice.votes }} vote{{ choice.votes|pluralize }}</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: {% if question.choice_set.all %}{{ choice.votes|floatformat:0 }}{% else %}0{% endif %}%"></div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <div class="actions">
+                <a href="{% url 'polls:detail' question.id %}" class="vote-again-button">Vote again?</a>
+            </div>
+        </div>
+        
+        <footer>
+            <p><a href="/admin/">Admin Panel</a> | <a href="/polls/">Home</a></p>
+        </footer>
+    </div>
+</body>
+</html>

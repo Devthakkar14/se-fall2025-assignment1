@@ -1,0 +1,50 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ question.question_text }} - Polls</title>
+    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Polls Application</h1>
+            <p><a href="{% url 'polls:index' %}">← Back to Polls</a></p>
+        </header>
+        
+        <div class="poll-detail">
+            <h2>{{ question.question_text }}</h2>
+            <p class="pub-date">Published: {{ question.pub_date|date:"F d, Y" }}</p>
+            
+            {% if error_message %}
+                <div class="error-message">
+                    <p><strong>{{ error_message }}</strong></p>
+                </div>
+            {% endif %}
+            
+            <form action="{% url 'polls:vote' question.id %}" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    <legend>Make your choice:</legend>
+                    {% for choice in question.choice_set.all %}
+                        <div class="choice-option">
+                            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+                            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+                        </div>
+                    {% endfor %}
+                </fieldset>
+                <div class="form-actions">
+                    <input type="submit" value="Vote" class="vote-button">
+                </div>
+            </form>
+        </div>
+        
+        <footer>
+            <p><a href="/admin/">Admin Panel</a> | <a href="/polls/">Home</a></p>
+        </footer>
+    </div>
+</body>
+</html>
