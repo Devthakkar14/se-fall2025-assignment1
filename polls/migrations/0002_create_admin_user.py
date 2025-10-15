@@ -6,17 +6,17 @@ from django.contrib.auth.models import User
 
 def create_admin_user(apps, schema_editor):
     """Create admin superuser if it doesn't exist"""
-    if not User.objects.filter(username='admin').exists():
+    if not User.objects.filter(username="admin").exists():
         User.objects.create_superuser(
-            username='admin',
-            email='admin@example.com',
-            password='admin123'  # Change this in production!
+            username="admin",
+            email="admin@example.com",
+            password="admin123",  # Change this in production!
         )
 
 
 def reverse_create_admin_user(apps, schema_editor):
     """Remove admin user"""
-    User.objects.filter(username='admin').delete()
+    User.objects.filter(username="admin").delete()
 
 
 class Migration(migrations.Migration):

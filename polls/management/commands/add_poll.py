@@ -8,37 +8,27 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            '--question',
+            "--question",
             type=str,
             default="What's your favorite programming language?",
-            help='The question text'
+            help="The question text",
         )
 
     def handle(self, *args, **options):
-        question_text = options['question']
-        
+        question_text = options["question"]
+
         # Create the question
         question = Question.objects.create(
             question_text=question_text,
             pub_date=timezone.now(),
         )
-        
+
         # Create some default choices
-        choices = [
-            "Python",
-            "JavaScript", 
-            "Java",
-            "C++",
-            "Other"
-        ]
-        
+        choices = ["Python", "JavaScript", "Java", "C++", "Other"]
+
         for choice_text in choices:
-            Choice.objects.create(
-                question=question,
-                choice_text=choice_text,
-                votes=0
-            )
-        
+            Choice.objects.create(question=question, choice_text=choice_text, votes=0)
+
         self.stdout.write(
             self.style.SUCCESS(f'Successfully created poll: "{question_text}"')
         )
