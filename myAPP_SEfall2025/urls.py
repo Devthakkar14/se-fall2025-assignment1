@@ -18,14 +18,20 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
+from django.http import HttpResponse
 
 
 def redirect_to_polls(request):
     return redirect("/polls/")
 
 
+def health_check(request):
+    return HttpResponse("OK", status=200)
+
+
 urlpatterns = [
     path("", redirect_to_polls),
+    path("health/", health_check),
     path("polls/", include("polls.urls")),
     path("admin/", admin.site.urls),
 ]
