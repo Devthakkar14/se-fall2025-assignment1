@@ -20,16 +20,16 @@ script:
   - coveralls
 
 # Deploy to AWS Elastic Beanstalk on successful build
-# deploy:
-#   provider: elasticbeanstalk
-#   region: us-east-1
-#   app: se_django_hello_world
-#   env: django-polls-prod
-#   bucket_name: elasticbeanstalk-us-east-1-183631324450
-#   access_key_id: $AWS_ACCESS_KEY_ID
-#   secret_access_key: $AWS_SECRET_ACCESS_KEY
-#   on:
-#     branch: main
+deploy:
+  provider: elasticbeanstalk
+  region: us-east-1
+  app: se_django_hello_world
+  env: django-polls-prod
+  bucket_name: elasticbeanstalk-us-east-1-183631324450
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  on:
+    branch: main
 
 # Cache pip dependencies
 cache: pip
