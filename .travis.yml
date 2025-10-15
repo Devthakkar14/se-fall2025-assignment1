@@ -20,3 +20,4 @@ deploy:
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   on:
     branch: main
+  skip_cleanup: true
