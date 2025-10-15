@@ -130,12 +130,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Static files configuration for production
 STATICFILES_DIRS = [
     BASE_DIR / "static",
-]
-
-# Security settings for production
-SECURE_BROWSER_XSS_FILTER = True
-SECURE_CONTENT_TYPE_NOSNIFF = True
-X_FRAME_OPTIONS = 'DENY'
+] if (BASE_DIR / "static").exists() else []
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
