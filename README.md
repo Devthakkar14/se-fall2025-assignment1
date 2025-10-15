@@ -80,3 +80,7 @@ The application is automatically deployed to AWS Elastic Beanstalk when tests pa
 ## License
 
 This project is for educational purposes.
+
+## Test Update
+
+This is a test update to verify CI/CD pipeline is working correctly.
