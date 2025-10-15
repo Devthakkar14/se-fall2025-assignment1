@@ -1,39 +1,22 @@
 language: python
 python:
-  - "3.13"
-
-env:
-  global:
-    - DJANGO_SETTINGS_MODULE=myAPP_SEfall2025.settings
-    - USE_SQLITE_FOR_TESTS=1
-
-branches:
-  only:
-    - main
+  - "3.9"
 
 install:
   - pip install -r requirements.txt
-  - pip install black flake8 coverage coveralls
-  - pip install awscli
 
 script:
   - black --check .
   - flake8 .
-  - coverage run manage.py test
-
-after_success:
-  - coveralls
-
-before_deploy:
-  - echo "Checking AWS credentials..."
-  - aws s3 ls s3://elasticbeanstalk-us-east-1-183631324450 --region us-east-1
+  - python manage.py test
 
 deploy:
   provider: elasticbeanstalk
-  region: "us-east-1"
-  app: "se_django_hello_world"
-  env: "django-polls-prod"
-  bucket: "elasticbeanstalk-us-east-1-183631324450"
+  region: us-east-1
+  app: se_django_hello_world
+  env: django-polls-prod
+  bucket_name: elasticbeanstalk-us-east-1-183631324450
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   on:
     branch: main
-  skip_cleanup: true
