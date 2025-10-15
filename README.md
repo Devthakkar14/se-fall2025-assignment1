@@ -11,15 +11,15 @@ A Django web application for creating and managing polls, built as part of Softw
 
 ## Build Status
 
-[![Build Status](https://travis-ci.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.svg?branch=main)](https://travis-ci.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME)
-[![Coverage Status](https://coveralls.io/repos/github/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME/badge.svg?branch=main)](https://coveralls.io/github/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME)
+[![Build Status](https://travis-ci.com/Devthakkar14/se-fall2025-assignment1.svg?branch=main)](https://travis-ci.com/Devthakkar14/se-fall2025-assignment1)
+[![Coverage Status](https://coveralls.io/repos/github/Devthakkar14/se-fall2025-assignment1/badge.svg?branch=main)](https://coveralls.io/github/Devthakkar14/se-fall2025-assignment1)
 
 ## Setup
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git
-   cd YOUR_REPO_NAME
+   git clone https://github.com/Devthakkar14/se-fall2025-assignment1.git
+   cd se-fall2025-assignment1
    ```
 
 2. Create a virtual environment:
@@ -75,7 +75,7 @@ The application is automatically deployed to AWS Elastic Beanstalk when tests pa
 
 ## Live Application
 
-[Deployed Application URL](https://your-app-name.elasticbeanstalk.com)
+[Deployed Application URL](https://django-polls-prod.eba-g4a3cury.us-east-1.elasticbeanstalk.com)
 
 ## License
 

@@ -23,9 +23,9 @@ script:
 deploy:
   provider: elasticbeanstalk
   region: us-east-1
-  app: your-app-name
-  env: your-app-env
-  bucket_name: your-eb-bucket
+  app: se_django_hello_world
+  env: django-polls-prod
+  bucket_name: elasticbeanstalk-us-east-1-183631324450
   access_key_id: $AWS_ACCESS_KEY_ID
   secret_access_key: $AWS_SECRET_ACCESS_KEY
   on:
