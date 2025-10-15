@@ -128,9 +128,13 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 # Simple settings for deployment
 
 # Static files configuration for production
-STATICFILES_DIRS = [
-    BASE_DIR / "static",
-] if (BASE_DIR / "static").exists() else []
+STATICFILES_DIRS = (
+    [
+        BASE_DIR / "static",
+    ]
+    if (BASE_DIR / "static").exists()
+    else []
+)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
